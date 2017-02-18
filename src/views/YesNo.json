@@ -1,0 +1,31 @@
+{
+  "Main": {
+    "width": 360,
+    "height": "100%",
+    "mood": "clown",
+    "message": "I noticed a transaction. Was it trivial or crucial?",
+    "crucial": "Crucial",
+    "trivial": "Trivial"
+  },
+  "Crucial": {
+    "width": 360,
+    "height": "100%",
+    "mood": "blush",
+    "message": "OK. I got it.",
+    "answered": "crucial"
+  },
+  "Trivial": {
+    "width": 360,
+    "height": "100%",
+    "mood": "crying",
+    "message": "OK. Thanks for letting me know.",
+    "answered": "trivial"
+  },
+  "Waiting": {
+    "width": 360,
+    "height": "100%",
+    "mood": "crying",
+    "message": "I'm waiting for a transaction.",
+    "answered": "trivial"
+  }
+}

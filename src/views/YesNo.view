@@ -1,0 +1,121 @@
+# begin view YesNo
+## begin view
+YesNo is Vertical
+backgroundColor #0376ee
+height props.height
+overflowY auto
+width props.width
+padding 20
+
+Martin is Image
+src https://files.usepages.today/parts.viewsdx.com/emo/smiley-${props.mood}.svg
+alignSelf center
+width 300
+marginTop 20
+
+Vertical
+alignSelf center
+backgroundColor white
+width 20
+height 20
+transform rotate(45deg)
+marginBottom -10
+
+
+Message is Text
+text props.message
+fontFamily PT Sans
+fontSize 22
+backgroundColor white
+borderRadius 10
+padding 10
+minWidth 350
+maxWidth 350
+alignSelf center
+
+Buttons is Horizontal
+when !props.waiting
+position fixed
+bottom 30
+alignSelf center
+marginTop 50
+opacity props.answered? 0 : 1
+pointerEvents props.answered? 'none' : 'inherit'
+transition all 0.25s linear
+TrivialButton is Vertical
+backgroundColor white
+borderRadius 100
+height 100
+width 100
+alignItems center
+justifyContent center
+boxShadow 0px 5px 25px #2b3997
+transformActive scale(1.5)
+transformActiveHover scale(1.5)
+transformHover scale(1.05)
+transition all 0.25s linear
+isActive props.answered === 'trivial'
+onClick props.trivial
+cursor props.answered? 'default': 'cursor'
+Trivial is Text
+text Trivial
+textAlign center
+fontFamily Roboto Slab, sans-serif
+fontSize 20
+color #2e69fd
+
+
+CrucialButton is Vertical
+backgroundColor white
+borderRadius 100
+alignItems center
+justifyContent center
+height 100
+width 100
+marginLeft 10
+boxShadow 0px 5px 25px #2b3997
+transformActive scale(1.5)
+transformActiveHover scale(1.5)
+transformHover scale(1.05)
+transition all 0.25s linear
+isActive props.answered === 'crucial'
+onClick props.crucial
+cursor props.answered? 'default': 'cursor'
+Crucial is Text
+text Crucial
+textAlign center
+fontFamily Roboto Slab, serif
+fontSize 20
+color #2e69fd
+## end view
+## begin props
+Main is State
+width 360
+height 100%
+mood clown
+message I noticed a transaction. Was it trivial or crucial?
+crucial Crucial
+trivial Trivial
+
+Crucial is State
+width 360
+height 100%
+mood blush
+message OK. I got it. 
+answered crucial
+
+Trivial is State
+width 360
+height 100%
+mood crying
+message OK. Thanks for letting me know. 
+answered trivial
+
+Waiting is State
+width 360
+height 100%
+mood crying
+message I'm waiting for a transaction. 
+answered trivial
+## end props
+# end view YesNo

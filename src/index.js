@@ -1,28 +1,71 @@
 import { Route, Router, run } from 'viewsdx-run-react'
-import HomeView from 'views/Home.js'
+import YesNoView from 'views/YesNo.js'
+import yesNoData from 'views/YesNo.json'
 import React from 'react'
 
-class Home extends React.Component {
+const WAITING = `I'm waiting for a transaction...`
+
+const TRANSACTIONS = [
+  'tr1',
+  'tr2',
+  'tr3'
+]
+
+let next = 0
+
+const getTransactions = cb => {
+  setInterval(() => {
+    cb(TRANSACTIONS[next++])
+
+    if (next === TRANSACTIONS.length) {
+      next = 0
+    }
+  }, 10000)
+}
+
+class YesNo extends React.Component {
   state = {
-    isFeelingHappy: true,
-    isFeelingSad: false,
-    isFeelingVeryBad: false,
+    answered: false,
+    isWaiting: true,
+    message: WAITING,
+    mood: 'clown',
   }
 
-  changeMood = () => {
+  componentDidMount() {
+    getTransactions(message => {
+      this.setState({
+        answered: false,
+        isWaiting: true,
+        message,
+      })
+    })
+  }
+
+  crucial = () => {
     this.setState({
-      isFeelingHappy: false,
-      isFeelingSad: true,
+      answered: 'crucial',
+      isWaiting: true,
+      mood: 'blush',
+    })
+  }
+
+  trivial = () => {
+    this.setState({
+      answered: 'trivial',
+      isWaiting: true,
+      mood: 'crying',
     })
   }
 
   render() {
-    const { state } = this
+    const { state, props } = this
 
     return (
-      <HomeView
+      <YesNoView
         {...state}
-        changeMood={this.changeMood}
+        {...props}
+        crucial={this.crucial}
+        trivial={this.trivial}
       />
     )
   }
@@ -32,9 +75,7 @@ const App = props => (
   <Router>
     <Route
       path='/'
-      component={Home}
-      height={props.height}
-      width={props.width}
+      component={cprops => <YesNo {...props} {...cprops} />}
     />
   </Router>
 )
