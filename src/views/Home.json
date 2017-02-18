@@ -1,0 +1,20 @@
+{
+  "Happy": {
+    "height": "100%",
+    "width": 360,
+    "isFeelingHappy": "yes",
+    "changeMood": "Sad"
+  },
+  "Sad": {
+    "height": "100%",
+    "width": 360,
+    "isFeelingSad": "yes",
+    "changeMood": "VeryBad"
+  },
+  "VeryBad": {
+    "height": "100%",
+    "width": 360,
+    "isFeelingVeryBad": "yes",
+    "changeMood": "Happy"
+  }
+}

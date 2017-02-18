@@ -1,0 +1,63 @@
+# begin view Home
+## begin view
+Home is Vertical
+backgroundColor #fcf9f9
+height props.height
+overflowY auto
+width props.width
+Text
+text SAVE!!!!!!!!!!
+fontSize 40
+fontFamily Playfair Display, serif
+alignSelf center
+marginTop 75
+
+Button is Vertical
+onClick props.changeMood
+marginTop 50
+backgroundColor deepskyblue
+padding 10
+cursor pointer
+height 220
+alignItems center
+Image
+src https://files.usepages.today/parts.viewsdx.com/emo/smiley-grin.svg
+opacity props.isFeelingHappy? 1 : 0
+position absolute
+transition opacity 0.25s linear
+width 200
+
+Image
+src https://files.usepages.today/parts.viewsdx.com/emo/smiley-dead.svg
+opacity props.isFeelingVeryBad? 1 : 0
+position absolute
+transition opacity 0.25s linear
+width 200
+
+Image
+src https://files.usepages.today/parts.viewsdx.com/emo/smiley-sad.svg
+opacity props.isFeelingSad? 1 : 0
+position absolute
+transition opacity 0.25s linear
+width 200
+## end view
+## begin props
+Happy is State
+height 100%
+width 360
+isFeelingHappy yes
+changeMood Sad
+
+Sad is State
+height 100%
+width 360
+isFeelingSad yes
+changeMood VeryBad
+
+VeryBad is State
+height 100%
+width 360
+isFeelingVeryBad yes
+changeMood Happy
+## end props
+# end view Home
